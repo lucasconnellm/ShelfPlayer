@@ -20,6 +20,7 @@ internal extension NowPlaying {
         
         func body(content: Content) -> some View {
             if horizontalSizeClass == .compact {
+                @Bindable var viewModel = viewModel
                 ZStack(alignment: .bottom) {
                     content
                         .allowsHitTesting(!viewModel.expanded)
@@ -192,6 +193,7 @@ private struct CollapsedForeground: View {
     let item: PlayableItem
     
     var body: some View {
+        @Bindable var viewModel = viewModel
         Button {
             viewModel.expanded.toggle()
         } label: {
